@@ -1,0 +1,29 @@
+
+
+/*write  a program to get the telephone no. and display the ISD code,
+STD code, area code individually using redefine clause.
+
+
+         IDENTIFICATION DIVISION.                         
+         PROGRAM-ID. PRG18.                               
+         ENVIRONMENT DIVISION.                            
+         DATA DIVISION.                                   
+         WORKING-STORAGE SECTION.                         
+         01 TELEPHONE-NUMBER         PIC X(13).           
+         01 TELE-NUM REDEFINES TELEPHONE-NUMBER.          
+            05 ISD-CODE              PIC X(3).            	
+            05 STD-CODE              PIC X(3).            
+            05 AREA-CODE             PIC X(3).            
+            05 NUM                   PIC X(7).            
+         PROCEDURE DIVISION.                              
+         MAIN-PARA.                                       
+           PERFORM ACCEPT-PARA.                        
+           PERFORM DISP-PARA.                          
+           STOP RUN.                                   
+        ACCEPT-PARA.                                   
+           ACCEPT TELEPHONE-NUMBER.                    
+        DISP-PARA.                                     
+           DISPLAY ISD-CODE.                           
+           DISPLAY STD-CODE.                           
+           DISPLAY AREA-CODE.                          
+           DISPLAY NUM.                                

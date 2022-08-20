@@ -1,0 +1,19 @@
+
+
+/*write a program to implement the usage of COMP variables. Move some alphanumeric
+  value in comp variable and also do some arithmetic operation on comp variables
+ with alphanumeric and find the result.
+
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PRG10.                                           
+       ENVIRONMENT DIVISION.                                        
+       DATA DIVISION.                                               
+       WORKING-STORAGE SECTION.                                     
+       77 NUM1       PIC 9(1) USAGE IS COMP VALUE 2.             
+       77 NUM2       PIC 9(3) USAGE IS COMP VALUE 001.             
+       77 TOTAL      PIC 9(1) USAGE IS COMP.                        
+       PROCEDURE DIVISION.                                          
+             COMPUTE TOTAL = NUM1 + NUM2.                             
+             DISPLAY TOTAL.                                           
+             STOP RUN.        

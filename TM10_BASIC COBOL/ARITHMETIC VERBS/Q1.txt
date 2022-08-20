@@ -1,0 +1,26 @@
+
+
+/*write a program to perform the arithmetic operations using arithmetic verbs.
+  (workout with integer nos, decimal nos and signed nos).
+
+
+      IDENTIFICATION DIVISION.                             
+      PROGRAM-ID. PRG10.                                   
+      ENVIRONMENT DIVISION.                                
+      DATA DIVISION.                                       
+      WORKING-STORAGE SECTION.                             
+      77 NUM1       PIC 9(4).                              
+      77 NUM2       PIC 9(4).                             
+      77 TOTAL      PIC 9(4).                              
+      PROCEDURE DIVISION.                                  
+          ACCEPT NUM1.                                     
+          ACCEPT NUM2.                                     
+          ADD NUM1 TO NUM2 GIVING TOTAL.                   
+          DISPLAY TOTAL.                                 
+          SUBTRACT NUM1 FROM NUM2 GIVING TOTAL.          
+          DISPLAY TOTAL.                                 
+          MULTIPLY NUM1 BY NUM2 GIVING TOTAL.            
+          DISPLAY TOTAL.                                 
+          DIVIDE NUM1 BY NUM2 GIVING TOTAL.              
+          DISPLAY TOTAL.                                 
+          STOP RUN.  

@@ -1,0 +1,17 @@
+
+
+/*Allocate a ESDS using IDCAMS
+
+
+//WPR109A JOB WIPRO,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IDCAMS
+//SYSIN DD *
+    DEFINE CLUSTER(        -
+           NAME(WPR109.MAR11.EMPESDS)    -
+           NONINDEXED     -
+           RECORDSIZE(80,80)    -
+           CYL(1,1)     -
+          )
+/*
+//SYSPRINT DD SYSOUT=*
+//SYSOUT DD SYSOUT=*

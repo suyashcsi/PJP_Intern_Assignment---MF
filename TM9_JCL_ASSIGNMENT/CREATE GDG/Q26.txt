@@ -1,0 +1,17 @@
+
+
+
+//*create a GDG BASE named'PAYSLIP' which can generate 12 generations to store 12 months pay details
+
+
+//WPR109A JOB INTERN,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IDCAMS
+//SYSIN DD *
+        DEFINE GDG( 	-
+	NAME(WPR109.MAR10.PAYSLIP)	-
+	LIMIT(12)	-
+	EMPTY		-
+	SCRATCH		-
+)
+/*
+//SYSPRINT DD SYSOUT=*

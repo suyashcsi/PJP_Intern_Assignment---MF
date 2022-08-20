@@ -1,0 +1,21 @@
+
+
+/*write a program to calculate the rate of interest using compute statement(I=PNR/100)
+
+
+       IDENTIFICATION DIVISION.                                  
+       PROGRAM-ID. PRG14.                                        
+       ENVIRONMENT DIVISION.                                     
+       DATA DIVISION.                                            
+       WORKING-STORAGE SECTION.                                  
+       77 P       PIC 9(2).                                      
+       77 R       PIC 9(2).                                      
+       77 T       PIC 9(2).                                      
+       77 I       PIC 9(3).                                      
+       PROCEDURE DIVISION.                                       
+           ACCEPT P.                                             
+           ACCEPT R.                                             
+           ACCEPT T.                                             
+           COMPUTE I = ( P * R * R ) / 100                       
+           DISPLAY "INTEREST IS:   " I                           
+           STOP RUN.            

@@ -1,0 +1,15 @@
+
+
+/*write a program to accept the string from user and to display the same.
+
+
+IDENTIFICATION DIVISION.                        
+PROGRAM-ID. PGM2.                              
+ENVIRONMENT DIVISION.                           
+DATA DIVISION.                                  
+WORKING-STORAGE SECTION.                        
+77 USERID PIC A(10).                           
+PROCEDURE DIVISION.                             
+        ACCEPT USERID.                          
+        DISPLAY 'USERID:' USERID.        
+        STOP RUN.              

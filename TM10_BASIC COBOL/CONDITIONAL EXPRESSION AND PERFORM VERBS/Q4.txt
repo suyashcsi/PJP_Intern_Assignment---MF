@@ -1,0 +1,25 @@
+       
+
+/*write a program to display the natural nos up to given limit
+(using perform varying)       
+
+
+        IDENTIFICATION DIVISION.                          
+        PROGRAM-ID. PRG18.                                
+        ENVIRONMENT DIVISION.                             
+        DATA DIVISION.                                    
+        WORKING-STORAGE SECTION.                          
+        77 STOP-AT      PIC 9(3).                         
+        77 INCREMENT    PIC 9(3) VALUE 1.                 
+        PROCEDURE DIVISION.                               
+        MAIN-PARA.                                        
+           PERFORM ACCEPT-PARA.                           
+           PERFORM COMP-PARA.                             
+           STOP RUN.                                      
+        ACCEPT-PARA.                                      
+           ACCEPT STOP-AT.                                
+        COMP-PARA.                                   
+           PERFORM VARYING INCREMENT FROM 1 BY 1     
+              UNTIL INCREMENT > STOP-AT              
+                 DISPLAY INCREMENT                   
+           END-PERFORM.  

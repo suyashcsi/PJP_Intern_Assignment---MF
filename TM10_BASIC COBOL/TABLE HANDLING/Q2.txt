@@ -1,0 +1,30 @@
+
+
+/*wrie a program to find which of the numbers from 1 to 50 are divisible by 3.
+IDENTIFICATION DIVISION.                                      
+       PROGRAM-ID. PRG25.                                            
+       ENVIRONMENT DIVISION.                                         
+       DATA DIVISION.                                                
+       WORKING-STORAGE SECTION.                                      
+       01 MAX-NUM.                                                   
+           05 NUM        PIC 9(2) OCCURS 50 TIMES.                   
+       77 IDX            PIC 9(2) VALUE 1.                           
+       77 REM            PIC 9(2).                                   
+       77 QUO            PIC 9(2).                                   
+       PROCEDURE DIVISION.                                           
+       MAIN-PARA.                                                    
+           PERFORM ACCEPT-PARA.                                      
+           PERFORM COMP-PARA.                                        
+           STOP RUN.                                                 
+       ACCEPT-PARA.                                                  
+           PERFORM VARYING IDX FROM 1 BY 1 UNTIL IDX > 50            
+              ACCEPT NUM(IDX)                                       
+           END-PERFORM.                                             
+       COMP-PARA.                                                   
+           PERFORM VARYING IDX FROM 1 BY 1 UNTIL IDX > 50            
+              DIVIDE0D NUM(IDX) BY 3 HAVING QUO REMAINDER REM        
+              IF REM = 0                                            
+                 DISPLAY NUM(IDX)                                   
+              END-IF                                                
+           END-PERFORM.                                             
+           DISPLAY TOTAL.  

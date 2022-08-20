@@ -1,0 +1,48 @@
+
+
+//*copy the contents of PS containing details of employees with salary detals for jan,feb,march to new generation of above gdg
+
+//WPR109A JOB INTERN,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IDCAMS
+//DD1 DD DSN=WPR109.INTERN.PS1,DISP=OLD,
+//DD2 DD DSN=WPR109.INTERN.PS1.GDG(0),
+//	 DISP=(NEW,CATLG,DELETE),
+//       SPACE=(TRK,(1,3,0)),
+//	 DCB=(LRECL=80,RECFM=FB,BLKSIZE=800)
+//SYSIN DD *
+//SYSPRINT DD SYSOUT=*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

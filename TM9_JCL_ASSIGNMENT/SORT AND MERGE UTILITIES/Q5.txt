@@ -1,0 +1,13 @@
+
+
+//*copy the 7 records from 5th record and store the same in ascending order of NAME.
+
+
+//WPR109A JOB INTERN,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=SORT
+//SORTIN DD DSN=WPR109.INTERN.SRC,DISP=OLD
+//SORTOUT DD DSN=WPR109.INTERN.OUTPUT,DISP=OLD
+//SYSIN DD *
+        SORT FIELDS=(5,7,CH,4,3,CH,A)
+/*
+//SYSPRINT DD SYSOUT=*

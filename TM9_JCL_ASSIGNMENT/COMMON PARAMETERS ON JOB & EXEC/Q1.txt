@@ -1,0 +1,27 @@
+
+
+//*write a JCL program with 3 steps,1st step shuold copy the content from one ps to another and,
+ if the first step executed successfully, execute the 2nd step to write "SUCCESS" message in spool else
+execute the 3rd step to display failed message.
+
+
+//WPR109A JOB WIPRO,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IEBGENER
+//SYSUT1 DD DSN=WPR109.MAR10.PS1,DISP=OLD
+//SYSUT2 DD DSN=WPR109.MAR10.PS2,DISP=OLD
+//SYSIN DD DUMMY
+//SYSPRINT DD SYSOUT=*
+//STEP2 EXEC PGM=IEBGENER,COND=(4,LT,STEP1)
+//SYSUT1 DD *
+SUCCESS
+/*
+//SYSUT2 DD SYSOUT=*
+//SYSIN DD DUMMY
+//SYSPRINT DD SYSOUT=*
+//STEP3 EXEC PGM=IEBGENER,COND=(4,GE,STEP1)
+//SYSUT1 DD *
+FAILURE
+/*
+//SYSUT2 DD SYSOUT=*
+//SYSIN DD DUMMY
+//SYSPRINT DD SYSOUT=*

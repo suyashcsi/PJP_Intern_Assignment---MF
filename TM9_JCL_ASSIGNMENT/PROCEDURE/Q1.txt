@@ -1,0 +1,11 @@
+
+
+//*write a catalog procedure to copy from dataset to another.
+
+
+//STEP1 EXEC PGM=IEBGENER
+//SYSUT1 DD DSN=&DS1,DISP=&A
+//SYSUT2 DD DSN=&DS2,DISP=&A
+
+
+

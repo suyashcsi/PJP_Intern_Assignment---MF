@@ -1,0 +1,21 @@
+
+
+
+/*Code an IDCAMS job to liiustrate the VERIFY option
+
+
+//JOB CARD
+//*------------------------------------------
+//* IDCAMS-VERIFY
+//*--------------------------------------------
+..STEP01 EXEC PGM=IDCAMS
+
+//INPUT	DD	 SYSOUT=*
+//SYSIN	DD	*
+	LISTCAT 	ENTRIES(INPUT)
+		  	ALL
+	VERIFY  	DATASET(INPUT)
+	LISTCAT 	ENTRIES(INPUT)
+			ALL
+/*
+//SYSPRINT DD SYSOUT=*

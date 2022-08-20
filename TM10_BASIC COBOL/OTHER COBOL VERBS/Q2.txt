@@ -1,0 +1,27 @@
+
+
+/*write a program to get the first name and last name then display
+  the name together first & last name using redefine clause.
+
+
+IDENTIFICATION DIVISION.
+PROGRAM-ID.PRG18.
+ENVIRONMENT DIVISION.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 F-NAME.                                       
+            02 FIRST-NAME       PIC A(5).                
+            02 LAST-NAME        PIC A(5).                
+01 INDI-NAME REDEFINES F-NAME.                   
+            02 FULL-NAME        PIC A(10).               
+PROCEDURE DIVISION.                              
+MAIN-PARA.                                       
+           PERFORM ACCEPT-PARA.                          
+           PERFORM DISP-PARA.                       
+           STOP RUN.                                
+ACCEPT-PARA.                                
+           ACCEPT F-NAME.                           
+DISP-PARA.                                  
+           DISPLAY FIRST-NAME.                      
+           DISPLAY LAST-NAME.                       
+           DISPLAY FULL-NAME.  

@@ -1,0 +1,19 @@
+
+
+//*copy all employee records in ascending order of department, within the department, records should be sorted by descending order of EMPID
+
+
+//WPR109A JOB INTERN,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=SORT
+//SORTIN DD DSN=WPR109.INTERN.SRC,DISP=OLD
+//SORTOUT DD DSN=WPR109.INTERN.TAR,DISP=OLD
+//SYSIN DD *
+        SORT FIELDS=(11,2,CH,A)
+/*
+//STEP2 EXEC PGM=SORT
+//SORTIN DD DSN=WPR109.INTERN.TAR,DISP=OLD
+//SORTOUT DD DSN=WPR109.INTERN.OUTPUT,DISP=OLD
+//SYSIN DD *
+        SORT FIELDS=(1,3,CH,D)
+/*
+//SYSPRINT DD SYSOUT=*

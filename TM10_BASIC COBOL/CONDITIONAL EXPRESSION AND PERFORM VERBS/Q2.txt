@@ -1,0 +1,45 @@
+
+
+/*repeat the above program for 5 students using perform statement.
+Display the output in spool in given format.(using group, filler and value all)
++C94***
+
+
+       IDENTIFICATION DIVISION.                    
+       PROGRAM-ID. PRG7.                           
+       ENVIRONMENT DIVISION.                       
+       DATA DIVISION.                              
+       WORKING-STORAGE SECTION.                    
+       01 G1.                                      
+           02 MARK1 PIC 9(2).                      
+           02 FILLER PIC X.                        
+           02 MARK2 PIC 9(2).                      
+           02 FILLER PIC X.                        
+           02 MARK3 PIC 9(2).                      
+       77 TOTAL PIC 9(3).                          
+       77 AVG PIC 9(3)V9(3).                       
+       77 PER PIC 9(3)V9(3).                                  
+       77 GRADE PIC A(5).                                     
+       PROCEDURE DIVISION.                                    
+       MAIN-PARA.                                             
+           PERFORM ACCEPT-PARA THRU DISP-PARA 5 TIMES.        
+           STOP RUN.                                          
+       ACCEPT-PARA.                                           
+           ACCEPT G1.                                         
+       COMP-PARA.                                             
+           COMPUTE TOTAL = ( MARK1  + MARK2 + MARK3 ).        
+           COMPUTE AVG = TOTAL / 3.                           
+           COMPUTE PER = ( TOTAL / 300 ) * 100.               
+           IF AVG > 80                                        
+                    MOVE "I" TO GRADE                               
+           ELSE                                               
+              IF AVG > 60 AND AVG < 79                                   MOVE "II" TO GRADE                                   ELSE                                                       IF AVG > 40 AND AVG < 60              
+                    MOVE "III" TO GRADE                
+                 ELSE                                  
+                    MOVE "FAIL" TO GRADE               
+           END-IF.                                     
+       DISP-PARA.                                      
+           DISPLAY "THE TOTAL IS: "    TOTAL.          
+           DISPLAY "THE AVERAGE IS: "    AVG.          
+           DISPLAY "THE PERCENTAGE IS: "    PER.       
+           DISPLAY "GRADE IS: "    GRADE.              

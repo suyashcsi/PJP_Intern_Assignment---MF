@@ -1,0 +1,25 @@
+
+
+
+/*list the odd and even number between the given 
+  limits by using PERFORM statement.
+
+
+        IDENTIFICATION DIVISION.                                    
+        PROGRAM-ID. PRG18.                                          
+        ENVIRONMENT DIVISION.                                       
+        DATA DIVISION.                                              
+        WORKING-STORAGE SECTION.                                    
+        77 START-LIST        PIC 9(4).                              
+        77 END-LIST          PIC 9(4).                              
+        77 INCREMENT         PIC 9(3).                              
+        77 REM               PIC 9(3).                              
+        77 QUO               PIC 9(3).                              
+        PROCEDURE DIVISION.                                         
+        MAIN-PARA.                                                  
+            PERFORM ACCEPT-PARA.                                    
+            PERFORM COMP-PARA.                                      
+            STOP RUN.                                               
+       ACCEPT-PARA.                                               
+           ACCEPT START-LIST.                                     
+           ACCEPT END-LIST.                                       

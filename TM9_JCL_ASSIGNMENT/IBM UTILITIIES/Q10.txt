@@ -1,0 +1,15 @@
+
+
+//*check the error message by executing the program 3 when the output dataset left open
+
+
+//WPR109A JOB INTERN,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IEBGENER
+//SYSUT1 DD DSN=WPR109.MAR10.PSFILE,DISP=OLD
+//SYSUT2 DD DSN=WPR109.MAR10.PDS(M1),DISP=(NEW,CATLG,DELETE),SPACE=(TRK,(2,2,1)),DCB=(LRECL=8O,RECFM=FB,BLKSIZE=800)
+//SYSIN DD DUMMY
+//SYSPRINT DD SYSOUT=*
+
+
+ERROR-034 Error occured during the execution of open dataset file
+INCORRECT JCL

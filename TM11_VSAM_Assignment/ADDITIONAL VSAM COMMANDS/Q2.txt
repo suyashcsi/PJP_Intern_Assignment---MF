@@ -1,0 +1,13 @@
+
+
+
+/*Code an IDCAMS program with VERIFY command of any VSAM file
+
+
+//WPR109A JOB WIPRO,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1  EXEC PGM = IDCAMS
+//DD1 DD DSN=WPR109.MAR11.KSDS,DISP=OLD
+//SYSIN DD  *
+   VERIFY DD1                                  
+/*		 
+//SYSPRINT DD  SYSOUT = *

@@ -1,0 +1,22 @@
+
+
+
+/*Identify important fields after the LISTCAT command for all VSAM files
+
+
+NAME--->lists the name and type of the entries.
+
+HISTORY---> lists the following information for each entries:- name, 
+      	    type of the entry, owner-id, creation date, expiration date, 
+            release, status (if entry is GDG or non-VSAM).
+
+VOLUME--->lists all the information provided by specifying HISTORY, plus it also
+	  list the volume serial numbers and device types allocated to the entries.
+
+ALLOCATION--->lists all the information provided by specifying VOLUME, 
+	      plus it also list the detailed information about the space allocation.
+
+ALL--->lists all the information specified in above options plus some 
+       other information such as CA-RECLAIM, and fields under ATTRIBUTES, and STATISTICS.
+
+

@@ -1,0 +1,40 @@
+
+
+/*write a program to check the given no is prime or not.
+
+
+	IDENTIFICATION DIVISION.                                    
+        PROGRAM-ID. PRG18.                                          
+        ENVIRONMENT DIVISION.                                       
+        DATA DIVISION.                                              
+        WORKING-STORAGE SECTION.                                    
+        77 INP-NUM      PIC 9(3).                                   
+        77 RES          PIC 9(1) VALUE 0.                           
+        77 INC          PIC 9(2)  VALUE 2.                          
+        77 QUO          PIC ZZ9.                                    
+        77 REM          PIC ZZ9.                                    
+        PROCEDURE DIVISION.                                         
+        MAIN-PARA.                                                  
+           PERFORM ACCEPT-PARA.                                     
+            PERFORM COMP-PARA.                                    
+            PERFORM DISP-PARA.                                    
+            STOP RUN.                                             
+         ACCEPT-PARA.                                             
+            ACCEPT INP-NUM.                                       
+         COMP-PARA.                                               
+            PERFORM UNTIL INC < INP-NUM                           
+               DIVIDE INP-NUM BY INC GIVING QUO REMAINDER REM     
+               IF REM IS EQUAL TO 0                               
+                  MOVE 1 TO RES                                   
+                  EXIT   
+
+               ELSE                                               
+                COMPUTE INC = INC + 1                             
+               END-IF                                             
+            END-PERFORM.                                          
+        DISP-PARA.                                           
+           IF RES IS EQUAL TO 0                              
+              DISPLAY "THE GIVEN NUMBER IS PRIME!"           
+           ELSE                                              
+              DISPLAY "THE GIVEN NUMBER IS NON PRIME!"       
+           END-IF.                                  

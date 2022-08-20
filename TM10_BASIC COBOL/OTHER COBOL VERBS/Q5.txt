@@ -1,0 +1,45 @@
+
+
+/*write a program to accept age and amount of deposit and calculate
+  the returns with the interest based on the age, using condition name
+  (88 level). (returns=amount+interest).If minor (age<18) 7%, major (age is 18 to 30)9%,
+  middle age (age 30 to 40) 10% , old age( age is 41 to 60) 11% and Sr. Citizen (above 60) 12%. 
+
+        IDENTIFICATION DIVISION.                                 
+        PROGRAM-ID. PRG25.                                       
+        ENVIRONMENT DIVISION.                                    
+        DATA DIVISION.                                           
+        WORKING-STORAGE SECTION.                                 
+        01 INP-AGE          PIC 999.                             
+           88 MINOR         VALUE IS 1 THRU 18.                  
+           88 MAJOR         VALUE IS 18 THRU 30.                 
+           88 MIDDLE-AGE    VALUE IS 30 THRU 40.                 
+           88 OLD-AGE       VALUE IS 41 THRU 60.                 
+           88 SR-CITIZEN    VALUE IS 60 THRU 100.                
+        77 AMOUNT           PIC 9(5).                            
+        77 RETURNS          PIC 9(5)V9(5).                       
+        PROCEDURE DIVISION.                    
+        MAIN-PARA.                             
+           PERFORM ACCEPT-PARA.                
+           PERFORM COMP-PARA.                  
+           PERFORM DISP-PARA.                  
+           STOP RUN.                           
+        ACCEPT-PARA.                           
+           ACCEPT INP-AGE.                     
+           ACCEPT AMOUNT.                      
+        COMP-PARA.                                                
+           IF MINOR                                               
+              COMPUTE RETURNS = AMOUNT + ( ( 7 / 100 ) * AMOUNT)  
+           ELSE IF MAJOR                                          
+              COMPUTE RETURNS = AMOUNT + ( ( 9 / 100 ) * AMOUNT)  
+           ELSE IF MIDDLE-AGE                                     
+              COMPUTE RETURNS = AMOUNT + ( ( 10 / 100 ) * AMOUNT) 
+           ELSE IF OLD-AGE                                        
+              COMPUTE RETURNS = AMOUNT + ( ( 11 / 100 ) * AMOUNT)
+           ELSE                                                    
+              COMPUTE RETURNS = AMOUNT + ( ( 12 / 100 ) * AMOUNT)  
+           END-IF.                                                 
+        DISP-PARA.                                                 
+           DISPLAY INP-AGE.                                        
+           DISPLAY AMOUNT.                                         
+           DISPLAY RETURNS.

@@ -1,0 +1,19 @@
+
+
+/*write a program to accept the 2 nos. from user and display the same.
+
+
+IDENTIFICATION DIVISION.              
+PROGRAM-ID. PGM3.                     
+ENVIRONMENT DIVISION.                 
+DATA DIVISION.                        
+WORKING-STORAGE SECTION.              
+77 NUM1 PIC 9(3).                     
+77 NUM2 PIC 9(3).                     
+PROCEDURE DIVISION.                   
+        ACCEPT NUM1.                      
+        ACCEPT NUM2.                      
+        DISPLAY NUM1.                     
+        DISPLAY NUM2.                     
+        STOP RUN.                         
+

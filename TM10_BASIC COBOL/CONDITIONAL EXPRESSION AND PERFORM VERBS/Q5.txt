@@ -1,0 +1,37 @@
+
+
+
+/*write a program to find the sum of individual 
+  digits in a given 'N' number.
+ 
+
+       IDENTIFICATION DIVISION.                                
+       PROGRAM-ID. PRG18.                                      
+       ENVIRONMENT DIVISION.                                   
+       DATA DIVISION.                                          
+       WORKING-STORAGE SECTION.                                
+       77 NUM          PIC 9(4).                               
+       77 TEMP         PIC 9(4).                               
+       77 INCREMENT    PIC 9(3) VALUE 1.                       
+       77 QUO          PIC 9(3).                               
+       77 REM          PIC 9(3).                               
+       77 TOTAL        PIC 9(4) VALUE 0.                       
+       PROCEDURE DIVISION.                                     
+       MAIN-PARA.                                              
+           PERFORM ACCEPT-PARA.                                
+           PERFORM COMP-PARA.                                 
+           PERFORM DISP-PARA.                                 
+           STOP RUN.                                          
+       ACCEPT-PARA.                                           
+           ACCEPT NUM.                                        
+       COMP-PARA.                                             
+           MOVE NUM TO TEMP                                   
+           PERFORM UNTIL TEMP < 10                            
+              DIVIDE TEMP BY 10 GIVING QUO REMAINDER REM      
+              MOVE QUO TO TEMP                                
+              COMPUTE TOTAL = TOTAL + REM                     
+           END-PERFORM.                                       
+           COMPUTE TOTAL = TOTAL + TEMP.                      
+       DISP-PARA.                                             
+           DISPLAY "THE SUM OF DIGITS OF NUMBER " NUM.        
+           DISPLAY "IS:  "    TOTAL.                    

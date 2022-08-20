@@ -1,0 +1,23 @@
+
+
+
+/*write a program to illustrate data movement in the variable 
+(justifcation, truncation and zero padding) (USING value CLAUSE and MOVE statement) 
+(Hint: Declare the variables with 9(5) and  X(10) and pass the value with lesser size and
+more size both in value CLAUSE and MOVE statement) Also try this with accept and SYSIN.
+
+
+       IDENTIFICATION DIVISION.                        
+       PROGRAM-ID. PRG6.                               
+       ENVIRONMENT DIVISION.                           
+       DATA DIVISION.                                  
+       WORKING-STORAGE SECTION.                        
+       77 EMPID PIC 9(5) VALUE 3454.                   
+       77 EMPID2 PIC 9(5).                             
+       77 ALPNUM PIC X(10) VALUE 'ABC123'.             
+       PROCEDURE DIVISION.                             
+           MOVE EMPID TO EMPID2.                       
+           DISPLAY EMPID.                              
+           DISPLAY EMPID2.                             
+           DISPLAY ALPNUM.                             
+           STOP RUN.            

@@ -1,0 +1,23 @@
+
+
+
+/*Code a program to list all catalog entries of VSAM file
+
+
+//SAMPLE JOB(TESTJCL,XXXXXX),CLASS = A,MSGCLASS = C
+//STEP1  EXEC PGM = IDCAMS
+//SYSIN DD  *
+   ALTER  MY.VSAM.KSDSFILE 
+   [ADDVOLUMES(2)] 
+   [FREESPACE(6 6)] 
+   [KEYS(10 2)] 
+   REPRO INFILE(IN) 
+      OUTFILE(OUT)
+   LISTCAT ENTRY(MY.VSAM.KSDSFILE) 
+   ALL 
+   EXAMINE NAME(MY.VSAM.KSDSFILE) -                                    
+   INDEXTEST DATATEST -                  
+   ERRORLIMIT(50)
+   VERIFY DS(MY.VSAM.KSDSFILE) 
+/*
+//SYSPRINT DD SYSOUT=*

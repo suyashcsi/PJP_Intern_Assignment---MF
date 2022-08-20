@@ -1,0 +1,22 @@
+
+
+
+/*write a program to accept the student record(ROLL NO,NAME and 3 subject marks)
+individually and display the same. Also accept as a group and display individually.
+
+
+IDENTIFICATION DIVISION.                    
+PROGRAM-ID. PGM4.                            
+ENVIRONMENT DIVISION.                        
+DATA DIVISION.                               
+WORKING-STORAGE SECTION.                     
+01 G1.                                       
+         02 ROLLNO PIC 9(8).                      
+         02 NAME PIC A(8).                     
+         02 MARK1 PIC 9(3).                                                
+         02 MARK2 PIC 9(3).                       
+         02 MARK3 PIC 9(3).       
+PROCEDURE DIVISION.          
+        ACCEPT G1.               
+        DISPLAY G1               
+        STOP RUN.          

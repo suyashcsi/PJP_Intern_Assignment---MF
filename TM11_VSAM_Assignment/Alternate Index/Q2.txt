@@ -1,0 +1,17 @@
+
+
+
+/*Populate data only into the Alternate Index cluster and 
+note the contents. Can it behave like a stand-alone cluster
+
+DEFINE AIX(		-
+	NAME(WPR109.MAR11.EMPAIX)	-
+	RELATE(WPR109.MAR11.EMPKSDS)	-
+	KEYS(2,10)			-
+	RECORDSIZE(80,80)		-
+	CYL(1,1)			-
+	)
+/*
+//SYSPRINT DD SYSOUT=*
+
+NO, AIX behave like a stand-alone cluster

@@ -1,0 +1,17 @@
+
+
+/*write a program for the above data to stored rounded values in WS-TOT.
+
+
+       IDENTIFICATION DIVISION.                                     
+       PROGRAM-ID. PRG10.                                           
+       ENVIRONMENT DIVISION.                                        
+       DATA DIVISION.                                               
+       WORKING-STORAGE SECTION.                                     
+       77 WS-A       PIC 99V999 VALUE 23.678.                       
+       77 WS-B       PIC 99V999 VALUE 29.459.                       
+       77 WS-TOT     PIC 99V9.                                      
+       PROCEDURE DIVISION.                                          
+           COMPUTE WS-TOT ROUNDED = WS-A + WS-B.                    
+           DISPLAY WS-TOT.                                          
+           STOP RUN.     

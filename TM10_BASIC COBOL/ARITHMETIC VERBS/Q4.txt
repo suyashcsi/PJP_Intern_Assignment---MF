@@ -1,0 +1,16 @@
+
+/*write a program to convert the celsius to fahrenheit using compute statement(c*9/5+32=f, (f-32)*5/9=c)
+
+
+       IDENTIFICATION DIVISION.                                        
+       PROGRAM-ID. PRG14.                                              
+       ENVIRONMENT DIVISION.                                           
+       DATA DIVISION.                                                  
+       WORKING-STORAGE SECTION.                                        
+       77 CELCIUS       PIC 9(3).                                      
+       77 FAHRENHEIT    PIC 999V999.                                   
+       PROCEDURE DIVISION.                                             
+           ACCEPT CELCIUS.                                             
+           COMPUTE FAHRENHEIT = ( CELCIUS * ( 9 / 5 ) ) + 32.          
+           DISPLAY FAHRENHEIT.                                         
+           STOP RUN. 

@@ -1,0 +1,32 @@
+
+
+/*write a program that declares a group with 7 group items initialized with 7 week days using value clause. 
+  Redefine this group has occur clause and display the week days using occur subscript.
+  
+         IDENTIFICATION DIVISION.                              
+         PROGRAM-ID. PRG25.                                    
+         ENVIRONMENT DIVISION.                                 
+         DATA DIVISION.                                        
+         WORKING-STORAGE SECTION.                              
+         01 W-REC.                                             
+            02 W-DAYS.                                         
+               05 D1 PIC X(10) VALUE "SUNDAY".                 
+               05 D2 PIC X(10) VALUE "MONDAY".                 
+               05 D3 PIC X(10) VALUE "TUESDAY".                
+               05 D4 PIC X(10) VALUE "WEDNESDAY".              
+               05 D5 PIC X(10) VALUE "THURSDAY".               
+               05 D6 PIC X(10) VALUE "FRIDAY".                 
+               05 D7 PIC X(10) VALUE "SATURDAY".                   
+            02 W-DAYS1 REDEFINES W-DAYS PIC X(10) OCCURS 7 TIMES.  
+         77 I PIC 9(2) VALUE 0.                                    
+         PROCEDURE DIVISION.                                       
+         MAIN-PARA.                                                
+            PERFORM DISP-PARA.                                     
+            STOP RUN.                                              
+         DISP-PARA.                                                
+            PERFORM VARYING I FROM 1 BY 1 UNTIL I > 7              
+               DISPLAY W-DAYS1(I)                                  
+            END-PERFORM.                
+
+
+

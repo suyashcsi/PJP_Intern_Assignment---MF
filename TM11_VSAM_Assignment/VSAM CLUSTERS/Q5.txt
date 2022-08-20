@@ -1,0 +1,21 @@
+
+
+/*Identify the use of the REUSE option for VSAM cluster with an example.
+
+
+HAVING A REUSE OPTION HELPS US TO REOPEN THE DATA SET AS A NEW DATA SET,AS IF IT WERE EMPTY.
+
+//WPR109A JOB WIPRO,SUSI,CLASS=A,NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IDCAMS
+//SYSIN DD *
+    DEFINE CLUSTER(        -
+           NAME(WPR109.MAR11.EMPKSDS)    -
+           INDEXED     -
+           KEYS(3,0)     -
+           RECORDSIZE(80,80)    -
+           CYL(1,1)       -
+           REUSE         - 
+          )
+/*
+//SYSPRINT DD SYSOUT=*
+//SYSOUT DD SYSOUT=*

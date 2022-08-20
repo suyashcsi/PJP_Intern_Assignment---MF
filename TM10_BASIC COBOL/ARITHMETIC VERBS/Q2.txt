@@ -1,0 +1,24 @@
+
+
+/*write a program for the following requirements:
+
+  WS-A 99V999 VALUE 23.678
+  WS-B 99V999 VALUE 29.459
+  WS-TOT 99V9
+
+  Added value of WS-A and WS-B is stored in w=WS-TOT.(handle the overflow/truncation of the data)
+
+
+
+       IDENTIFICATION DIVISION.                                     
+       PROGRAM-ID. PRG10.                                           
+       ENVIRONMENT DIVISION.                                        
+       DATA DIVISION.                                               
+       WORKING-STORAGE SECTION.                                     
+       77 WS-A       PIC 99V999 VALUE 23.678.                       
+       77 WS-B       PIC 99V999 VALUE 29.459.                       
+       77 WS-TOT     PIC 99V9.                                      
+       PROCEDURE DIVISION.                                          
+           COMPUTE WS-TOT = WS-A + WS-B.                            
+           DISPLAY WS-TOT.                                          
+           STOP RUN.                                

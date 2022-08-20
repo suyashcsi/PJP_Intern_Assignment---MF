@@ -1,0 +1,30 @@
+
+
+/*write a program which accepts the payroll of employee as given below:
+     01	WS-PAY.
+        05 WS-FIXED-PAY.
+           10 WS-BASIC PIC 9(6)V99.
+           10 WS-DA PIC 9(6)V99.
+        05 WS-ADDITIONAL-PAY.
+           10 WS-HRA PIC 9(6)V99.
+        05 WS-MTHLY-INCENTIVE PIC 9(6)V99.
+        05 WS-DEDUCTIONS.
+           10 WS-PF PIC 9(6)V99.
+           10 WS-IT PIC 9(6)V99.
+           10 WS-OTHER PIC 9(6)V99.
+
+And regroup from DA to incentive as one group and HRA to IT using RENAME clause.
+
+   
+
+      IDENTIFICATION DIVISION.                  
+      PROGRAM-ID. PRG4.                          
+      ENVIRONMENT DIVISION.                     
+      DATA DIVISION.                            
+      WORKING-STORAGE SECTION.                  
+      77 TEMP PIC S9(4).                        
+      PROCEDURE DIVISION.                       
+          ACCEPT TEMP.                          
+          DISPLAY TEMP.                         
+          STOP RUN.                  
+          

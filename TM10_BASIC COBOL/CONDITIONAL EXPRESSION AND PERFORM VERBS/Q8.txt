@@ -1,0 +1,45 @@
+
+
+/*write a program to perform the arithmetic operation 
+  based the given options using evaluate statement
+
+  Option 1 -> ADD
+  Option 2 -> SUBTRACT
+  Option 3 -> MULTIPLY
+  Option 4 -> DIVIDE
+
+
+
+       IDENTIFICATION DIVISION.                       
+       PROGRAM-ID. PRG18.                             
+       ENVIRONMENT DIVISION.                          
+       DATA DIVISION.                                 
+       WORKING-STORAGE SECTION.                       
+       77 NUM-1        PIC 9(3).                      
+       77 NUM-2        PIC 9(3).                      
+       77 OPTION       PIC 9(1).                      
+       77 RESULT       PIC 9(4) VALUE 0.              
+       PROCEDURE DIVISION.                            
+       MAIN-PARA.                                     
+           PERFORM ACCEPT-PARA.                       
+            PERFORM COMP-PARA.                             
+            PERFORM DISPLAY-PARA.                          
+            STOP RUN.                                      
+        ACCEPT-PARA.                                       
+            ACCEPT NUM-1.                                  
+            ACCEPT NUM-2.                                  
+            ACCEPT OPTION.                                 
+        COMP-PARA.                                         
+            EVALUATE OPTION                                
+               WHEN '1'                                    
+                     COMPUTE RESULT = NUM-1 + NUM-2        
+               WHEN '2'                                    
+                     COMPUTE RESULT = NUM-1 - NUM-2        
+               WHEN '3'                                    
+                     COMPUTE RESULT = NUM-1 * NUM-2        
+               WHEN '4'                                    
+                    COMPUTE RESULT = NUM-1 / NUM-2          
+           END-EVALUATE.                                    
+       DISPLAY-PARA.                                        
+           DISPLAY "OPTION WAS: " OPTION.                   
+           DISPLAY "RESULT IS: " RESULT.     
