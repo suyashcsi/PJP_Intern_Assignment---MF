@@ -1,0 +1,36 @@
+2. Create a cobol program using the above Map to perform add operation on the data entered
+
+  IDENTIFICATION DIVISION.       
+  PROGRAM-ID. ARTPGG.            
+  DATA DIVISION.                 
+  WORKING-STORAGE SECTION.       
+         COPY ARTMAP. 
+  PROCEDURE DIVISION.            
+  MAIN-PARA.
+       MOVE LOW-VALUES TO ADARTO.                             
+       PERFORM SEND-PARA.                        
+       PERFORM RECEIVE-PARA. 
+       PERFORM COMP-PARA.    
+       PERFORM SEND-PARA.                    
+       PERFORM EXIT-PARA.         
+       STOP RUN. 
+  EXIT-PARA.
+       EXEC CICS
+          RETURN
+       END-EXEC.
+  SEND-PARA.                            
+       EXEC CICS                  
+         SEND MAP('ADART')      
+              MAPSET('ARTMAP')  
+              FROM(ADARTO)      
+              ERASE             
+       END-EXEC.  
+  RECEIVE-PARA.                   
+       EXEC CICS                  
+         RECEIVE MAP('ADART')    
+                MAPSET('ARTMAP')
+                INTO(ADARTI)    
+       END-EXEC. 
+  COMP-PARA.
+       COMPUTE RESO = NUM1I + NUM2I.
+

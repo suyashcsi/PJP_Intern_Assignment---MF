@@ -1,0 +1,86 @@
+4. Create a cobol program and MAP to display top five highly paid employees details in ascending order
+
+  IDENTIFICATION DIVISION.       
+  PROGRAM-ID. EMPGM1.            
+  DATA DIVISION.                 
+  WORKING-STORAGE SECTION.       
+       COPY EPEMAP.                        
+       EXEC SQL                
+           INCLUDE SQLCA       
+       END-EXEC.   
+       EXEC SQL
+              DECLARE C1 CURSOR
+              FOR
+              SELECT EMPLOYEE_NO,EMPLOYEE_NAME,PHONE_NUMBER,
+              AGE,HIREDATE,JOB_PROFILE,DEPARTMENT_ID,      
+              SALARY,COMMISSION FROM EMPLOYEES_TB ORDER BY
+              SALARY DESC
+       END-EXEC.            
+  01 EMP-REC.                       
+       02 EMPNO PIC S9(3) COMP.        
+       02 EMPNAME PIC X(6).            
+       02 PHONE PIC S9(10)V COMP-3.   
+       02 EMPAGE PIC S9(2) COMP.       
+       02 JOIN PIC X(10).              
+       02 EMPID PIC X(6).                
+       02 DEPTID PIC S9(2) COMP.                          
+       02 SALRY PIC S9(5)V COMP-3.                    
+       02 COMSION PIC S9(5)V COMP-3.                            
+  77 WS-CA PIC X(3). 
+  77 J PIC 9.            
+  77 WS-MSG PIC X(10).           
+  PROCEDURE DIVISION.            
+  MAIN-PARA.                     
+     MOVE LOW-VALUES TO EMPLO.
+     IF EIBCALEN = 0           
+          PERFORM SEND-PARA  
+          PSEU-PARA  
+     ELSE                       
+          PERFORM COMP-PARA  
+          PERFORM SEND-PARA   
+     END-IF.                    
+     PERFORM EXIT-PARA.         
+     STOP RUN.                  
+  SEND-PARA.                            
+     EXEC CICS                  
+         SEND MAP('EMPL')      
+              MAPSET('EPEMAP')  
+              FROM(EMPLO)      
+              ERASE             
+     END-EXEC. 
+  PSEU-PARA.                 
+     MOVE 'HAI' TO WS-CA.       
+     EXEC CICS                  
+          RETURN                
+          TRANSID('EM01')       
+          COMMAREA(WS-CA)       
+     END-EXEC.                                                     
+  COMP-PARA.     
+     EXEC SQL
+          OPEN C1
+     END-EXEC.   
+     PERFORM VARYING J FROM 5 BY -1 UNTIL J < 1             
+     EXEC SQL                                           
+        FETCH C1                            
+        INTO                                          
+          :EMPNO,:EMPNAME,:PHONE,
+          :EMPAGE,:JOIN,:EMPID,
+          :DEPTID,:SALRY,:COMSION                                  
+     END-EXEC 
+     MOVE EMPNO TO EMNUO(J)                         
+     MOVE EMPNAME TO EMNAO(J) 
+     MOVE PHONE TO PHNUO(J)                          
+     MOVE EMPAGE TO AGEO(J)
+     MOVE JOIN TO HIREO(J)     
+     MOVE EMPID TO JOBPO(J) 
+     MOVE DEPTID TO DEPTO(J)                          
+     MOVE SALRY TO SALRO(J)  
+     MOVE COMSION TO COMNO(J)   
+     END-PERFORM.                                                               
+  EXIT-PARA. 
+     EXEC SQL
+         CLOSE C1
+     END-EXEC.                                            
+     EXEC CICS                     
+         RETURN                    
+     END-EXEC.  

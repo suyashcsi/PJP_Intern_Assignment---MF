@@ -1,0 +1,19 @@
+
+
+/*Create a program to display 'welcome to cics'
+
+  IDENTIFICATION DIVISION.                
+  PROGRAM-ID. CICS1.                      
+  ENVIRONMENT DIVISION.                   
+  DATA DIVISION.                          
+  WORKING-STORAGE SECTION.                
+  77 WS-MSG PIC X(10) VALUE 'WELCOME TO CICS'. 
+  PROCEDURE DIVISION.                     
+       EXEC CICS                          
+          SEND TEXT FROM(WS-MSG)          
+          ERASE                           
+       END-EXEC.                          
+       EXEC CICS                          
+          RETURN                          
+       END-EXEC.                          
+       STOP RUN.     

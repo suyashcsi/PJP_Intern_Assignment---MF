@@ -1,0 +1,48 @@
+2. Create a MAP to accept data for the table EMPLOYEES_TB
+
+  EPEMAP  DFHMSD TYPE=&SYSPARM,MODE=INOUT,LANG=COBOL,TIOAPFX=YES,      *
+                 STORAGE=AUTO,CTRL=FREEKB
+  EMPL    DFHMDI SIZE=(24,80),LINE=1,COLUMN=1
+          DFHMDF POS=(5,10),LENGTH=15,INITIAL='EMPLOYEE_NO  :',        *
+                 ATTRB=(PROT,BRT)
+  EMNU    DFHMDF POS=(5,26),LENGTH=3,INITIAL='---',                    *
+                 ATTRB=(UNPROT,BRT),PICIN='S9(3)'
+          DFHMDF POS=(6,10),LENGTH=15,INITIAL='EMPLOYEE_NAME:',        *
+                 ATTRB=(PROT,BRT)
+  EMNA    DFHMDF POS=(6,26),LENGTH=6,INITIAL='------',                 *
+                 ATTRB=(UNPROT,BRT),PICIN='X(6)'
+          DFHMDF POS=(7,10),LENGTH=15,INITIAL='PHONE_NUMBER :',        *
+                 ATTRB=(PROT,BRT)
+  PHNU    DFHMDF POS=(7,26),LENGTH=10,INITIAL='----------',            *
+                 ATTRB=(UNPROT,BRT),PICIN='S9(10)V'
+          DFHMDF POS=(8,10),LENGTH=15,INITIAL='AGE          :',        *
+                 ATTRB=(PROT,BRT)
+  AGE     DFHMDF POS=(8,26),LENGTH=2,INITIAL='--',                     *
+                 ATTRB=(UNPROT,BRT),PICIN='S9(2)'
+          DFHMDF POS=(9,10),LENGTH=15,INITIAL='HIREDATE     :',        *
+                 ATTRB=(PROT,BRT)
+  HIRE    DFHMDF POS=(9,26),LENGTH=10,INITIAL='----------',            *
+                 ATTRB=(UNPROT,BRT),PICIN='X(10)'
+          DFHMDF POS=(10,10),LENGTH=15,INITIAL='JOB_PROFILE  :',       *
+                 ATTRB=(PROT,BRT)
+  JOBP    DFHMDF POS=(10,26),LENGTH=6,INITIAL='------',                *
+                 ATTRB=(UNPROT,BRT),PICIN='X(6)'
+          DFHMDF POS=(11,10),LENGTH=15,INITIAL='DEPARTMENT_ID:',       *
+                 ATTRB=(PROT,BRT)
+  DEPT    DFHMDF POS=(11,26),LENGTH=2,INITIAL='--',                    *
+                 ATTRB=(UNPROT,BRT),PICIN='S9(2)'
+          DFHMDF POS=(12,10),LENGTH=15,INITIAL='SALARY       :',       *
+                 ATTRB=(PROT,BRT)
+  SALR    DFHMDF POS=(12,26),LENGTH=5,INITIAL='-----',                 *
+                 ATTRB=(UNPROT,BRT),PICIN='S9(5)V'
+          DFHMDF POS=(13,10),LENGTH=15,INITIAL='COMMISSION   :',       *
+                 ATTRB=(PROT,BRT)
+  COMN    DFHMDF POS=(13,26),LENGTH=5,INITIAL='-----',                 *
+                 ATTRB=(UNPROT,BRT),PICIN='S9(5)V'
+          DFHMDF POS=(15,2),LENGTH=10,INITIAL='MESSAGE:',              *
+                 ATTRB=(PROT,BRT)
+  MSG     DFHMDF POS=(15,13),LENGTH=10,INITIAL='----------',           *
+                 ATTRB=(PROT,BRT),PICOUT='X(10)'
+          DFHMSD TYPE=FINAL 
+          END            
+   

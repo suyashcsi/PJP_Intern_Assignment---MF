@@ -1,0 +1,19 @@
+1. Create a cobol program to transfer the control to other cobol program using LINK
+
+  IDENTIFICATION DIVISION.       
+  PROGRAM-ID. EMPGM1.            
+  DATA DIVISION.                 
+  WORKING-STORAGE SECTION. 
+  77 WS-CA PIC X(3).        
+  PROCEDURE DIVISION. 
+     MOVE 'HAI' TO WS-CA.   
+     EXEC CICS
+        LINK PROGRAM('PGM3')
+        COMMAREA(WS-CA)
+        LENGTH(3)
+     END-EXEC.
+     EXEC CICS                     
+         RETURN                    
+     END-EXEC.     
+     STOP RUN. 
+         

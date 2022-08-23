@@ -1,0 +1,53 @@
+
+
+
+/*Create a program to accept 2 nos add them and print the result back to the user
+
+  IDENTIFICATION DIVISION.             
+  PROGRAM-ID. CICS1.                   
+  ENVIRONMENT DIVISION.                
+  DATA DIVISION.                       
+  WORKING-STORAGE SECTION.             
+  01 NUM1 PIC 9(4).                    
+  01 NUM2 PIC 9(4).                    
+  77 TOT PIC 9(4).                     
+  77 WS-MSG PIC X(7) VALUE '0000'.     
+  77 WS-CA PIC X(3).                   
+  PROCEDURE DIVISION.                  
+       IF EIBCALEN = 0                 
+          PERFORM SEND-PARA            
+       ELSE                            
+          PERFORM RECEIVE-PARA         
+          PERFORM COMP-PARA            
+       END-IF.                         
+       PERFORM EXIT-PARA.              
+       STOP RUN.                       
+  SEND-PARA.                           
+       EXEC CICS                       
+          SEND TEXT FROM(WS-MSG)       
+          ERASE                        
+       END-EXEC.  
+       MOVE 'HAI' TO WS-CA.                           
+       EXEC CICS                                      
+          RETURN                                      
+          TRANSID('VI05')                             
+          COMMAREA(WS-CA)                             
+       END-EXEC.                                      
+  RECEIVE-PARA.                                       
+       EXEC CICS                                      
+          RECEIVE INTO(WS-MSG)                        
+       END-EXEC.                                      
+  COMP-PARA.                                          
+       MOVE WS-MSG TO TOT.                            
+       DIVIDE TOT BY 100 GIVING NUM1 REMAINDER NUM2.  
+       COMPUTE TOT = NUM1 + NUM2.                     
+       MOVE TOT TO WS-MSG.                            
+       EXEC CICS                                      
+          SEND TEXT FROM(WS-MSG)                      
+          ERASE                                       
+       END-EXEC.                                      
+  EXIT-PARA.                                          
+       EXEC CICS                                      
+          RETURN                                      
+       END-EXEC.                                                                                
+ 

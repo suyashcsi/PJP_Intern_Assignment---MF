@@ -1,0 +1,85 @@
+3. Create a cobol program using the above MAP and insert the accepted data into the table.
+
+  IDENTIFICATION DIVISION.       
+  PROGRAM-ID. EMPGM1.            
+  DATA DIVISION.                 
+  WORKING-STORAGE SECTION.       
+       COPY EPEMAP.                        
+       EXEC SQL                
+           INCLUDE SQLCA       
+       END-EXEC.               
+  01 EMP-REC.                       
+       02 EMPNO PIC S9(3) COMP.        
+       02 EMPNAME PIC X(6).            
+       02 PHONE PIC S9(10)V COMP-3.   
+       02 EMPAGE PIC S9(2) COMP.       
+       02 JOIN PIC X(10).              
+       02 EMPID PIC X(6).                
+       02 DEPTID PIC S9(2) COMP.                          
+       02 SALRY PIC S9(5)V COMP-3.                    
+       02 COMSION PIC S9(5)V COMP-3.                            
+  77 WS-CA PIC X(3).             
+  77 WS-MSG PIC X(10).           
+  PROCEDURE DIVISION.            
+  MAIN-PARA.                     
+     MOVE LOW-VALUES TO EMPLO.
+     IF EIBCALEN = 0           
+          PERFORM SEND-PARA  
+          PSEU-PARA  
+     ELSE                      
+          PERFORM RECEIVE-PARA 
+          PERFORM COMP-PARA  
+          PERFORM SEND-PARA   
+     END-IF.                    
+     PERFORM EXIT-PARA.         
+     STOP RUN.                  
+  SEND-PARA.                            
+     EXEC CICS                  
+         SEND MAP('EMPL')      
+              MAPSET('EPEMAP')  
+              FROM(EMPLO)      
+              ERASE             
+     END-EXEC. 
+  PSEU-PARA.                 
+     MOVE 'HAI' TO WS-CA.       
+     EXEC CICS                  
+          RETURN                
+          TRANSID('EM01')       
+          COMMAREA(WS-CA)       
+     END-EXEC.                  
+  RECEIVE-PARA.                   
+     EXEC CICS                  
+        RECEIVE MAP('EMPL')    
+                MAPSET('EPEMAP')
+                INTO(EMPLI)    
+     END-EXEC.                                    
+  COMP-PARA.                                                                                       
+     MOVE EMNUI TO EMPNO.                          
+     MOVE EMNAI TO EMPNAME. 
+     MOVE PHNUI TO PHONE.                          
+     MOVE AGEI TO EMPAGE. 
+     MOVE HIREI TO JOIN.      
+     MOVE JOBPI TO EMPID. 
+     MOVE DEPTI TO DEPTID.                          
+     MOVE SALRI TO SALRY.  
+     MOVE COMNI TO COMSION.                  
+     EXEC SQL                                      
+          INSERT INTO EMPLOYEES_TB                 
+          (EMPLOYEE_NO,EMPLOYEE_NAME,PHONE_NUMBER, 
+           AGE,HIREDATE,JOB_PROFILE,DEPARTMENT_ID, 
+           SALARY,COMMISSION)                      
+           VALUES                                  
+          (:EMPNO,:EMPNAME,:PHONE,:EMPAGE,:JOIN,   
+           :EMPID,:DEPTID,:SALRY,:COMSION)              
+     END-EXEC.                                    
+     IF SQLCODE = 0                               
+           MOVE 'SUCCESS' TO MSGO   
+     ELSE                                          
+           MOVE SQLCODE TO MSGO                             
+     END-IF.                                                                   
+  EXIT-PARA.                                            
+     EXEC CICS                     
+         RETURN                    
+     END-EXEC.                     
+  
+        

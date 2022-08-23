@@ -1,0 +1,60 @@
+1. Alter the arthmetic program of to include pseudo-conversational coding, using the arthmetic map to perform all operations based
+   on the key pressed with the data entered
+   [For all exercises and projects given after this should use only pseudo-conversation technique]
+
+  IDENTIFICATION DIVISION.       
+  PROGRAM-ID. ARTPGG.            
+  DATA DIVISION.                 
+  WORKING-STORAGE SECTION.       
+         COPY ARTMAP. 
+         COPY DFHAID.
+  77 WS-CA PIC X(3). 
+  PROCEDURE DIVISION.            
+  MAIN-PARA.
+       MOVE LOW-VALUES TO ADARTO.  
+       IF EIBCALEN = 0                            
+           PERFORM SEND-PARA
+           PERFORM PSEU-PARA   
+       ELSE                   
+           PERFORM RECEIVE-PARA 
+           PERFORM COMP-PARA    
+           PERFORM SEND-PARA 
+       END-IF.                     
+       PERFORM EXIT-PARA.         
+       STOP RUN. 
+  EXIT-PARA.
+       EXEC CICS
+          RETURN
+       END-EXEC.
+  SEND-PARA.                            
+       EXEC CICS                  
+         SEND MAP('ADART')      
+              MAPSET('ARTMAP')  
+              FROM(ADARTO)      
+              ERASE             
+       END-EXEC.  
+  PSEU-PARA.
+       MOVE 'HAI' TO WS-CA.       
+       EXEC CICS                  
+            RETURN                
+            TRANSID('AD01')       
+            COMMAREA(WS-CA)       
+       END-EXEC.  
+  RECEIVE-PARA.                   
+       EXEC CICS                  
+         RECEIVE MAP('ADART')    
+                MAPSET('ARTMAP')
+                INTO(ADARTI)    
+       END-EXEC. 
+  COMP-PARA.
+       EVALUATE TRUE                                
+       WHEN EIBAID = DFHPF1                         
+          COMPUTE RESO = NUM1I + NUM2I                     
+       WHEN EIBAID = DFHPF2                         
+          COMPUTE RESO = NUM1I - NUM2I                        
+       WHEN EIBAID = DFHPF3                         
+          COMPUTE RESO = NUM1I * NUM2I 
+       WHEN EIBAID = DFHPF4                         
+          COMPUTE RESO = NUM1I / NUM2I                                            
+       END-EVALUATE.  
+

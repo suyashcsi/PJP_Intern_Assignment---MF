@@ -1,0 +1,23 @@
+1. Create a MAP design for arthmetic operations
+
+       Num1:__________
+       Num2:__________
+       Res :__________
+ 
+  ARTMAP  DFHMSD TYPE=&SYSPARM,MODE=INOUT,LANG=COBOL,TIOAPFX=YES,      *
+                 STORAGE=AUTO,CTRL=FREEKB
+  ADART   DFHMDI SIZE=(24,80),LINE=1,COLUMN=1
+          DFHMDF POS=(5,10),LENGTH=10,INITIAL='NUM1:  ',               *
+                 ATTRB=(PROT,BRT)
+  NUM1    DFHMDF POS=(5,21),LENGTH=4,INITIAL='----',                   *
+                 ATTRB=(UNPROT,BRT),PICIN='9(4)'
+          DFHMDF POS=(7,10),LENGTH=10,INITIAL='NUM2:  ',               *
+                 ATTRB=(PROT,BRT)
+  NUM2    DFHMDF POS=(7,21),LENGTH=4,INITIAL='----',                   *
+                 ATTRB=(UNPROT,BRT),PICIN='9(4)'
+          DFHMDF POS=(9,10),LENGTH=10,INITIAL='RES:   ',               *
+                 ATTRB=(PROT,BRT)
+  RES     DFHMDF POS=(9,21),LENGTH=5,INITIAL='-----',                  *
+                 ATTRB=(PROT,BRT),PICOUT='9(5)'
+          DFHMSD TYPE=FINAL 
+          END               

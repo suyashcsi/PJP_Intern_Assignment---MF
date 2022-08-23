@@ -1,0 +1,20 @@
+
+
+
+/*Create a cobol program to insert data in TSQ
+
+  IDENTIFICATION DIVISION.       
+  PROGRAM-ID. EMPGM1.         
+  DATA DIVISION.                
+  WORKING-STORAGE SECTION.  
+       COPY EPEMAP. 
+  77 OPT1 PIC X(5) VALUE 'HELLO'.      
+  PROCEDURE DIVISION.
+       EXEC CICS WRITETEQ TS
+         QUEUE('SAMPLE')
+         FROM(OPT1)
+         LENGTH(5)
+         MAIN
+       END-EXEC.
+       STOP RUN.
+          

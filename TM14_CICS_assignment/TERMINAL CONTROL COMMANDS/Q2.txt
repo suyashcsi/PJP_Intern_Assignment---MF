@@ -1,0 +1,37 @@
+
+
+/* Create a program to accept your name and display 'welcome'
+
+  IDENTIFICATION DIVISION.                
+  PROGRAM-ID. CICS1.                      
+  ENVIRONMENT DIVISION.                   
+  DATA DIVISION.                          
+  WORKING-STORAGE SECTION.                
+  77 WS-MSG PIC X(10). 
+  77 WS-CA PIC X(3).
+  PROCEDURE DIVISION.
+       IF EIBCALEN = 0
+       EXEC CICS
+          SEND TEXT FROM(WS-MSG)
+          ERASE
+       END-EXEC
+       MOVE 'HAI' TO WS-CA       
+       EXEC CICS                  
+          RETURN                
+          TRANSID('VI05')       
+          COMMAREA(WS-CA)       
+       END-EXEC
+       ELSE
+       EXEC CICS                          
+          RECEIVE INTO(WS-MSG)                                    
+       END-EXEC  
+       MOVE 'WELCOME' TO WS-MSG                  
+       EXEC CICS                          
+          SEND TEXT FROM(WS-MSG)          
+          ERASE                           
+       END-EXEC
+       END-IF.                         
+       EXEC CICS                          
+          RETURN                          
+       END-EXEC.                         
+       STOP RUN.  

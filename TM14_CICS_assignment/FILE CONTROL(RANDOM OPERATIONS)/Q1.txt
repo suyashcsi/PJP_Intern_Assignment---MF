@@ -1,0 +1,90 @@
+1. Create a cobol program to read,write,delete data in PS file
+
+  IDENTIFICATION DIVISION.       
+  PROGRAM-ID. EMPGM1.   
+  INPUT-OUTPUT SECTION.                         
+  FILE-CONTROL.                                 
+       SELECT OUTFILE ASSIGN TO DD1             
+       ORGANIZATION IS INDEXED                  
+       ACCESS MODE IS RANDOM                    
+       RECORD KEY IS WS-KEY                     
+       FILE STATUS IS WS-FS1.           
+  DATA DIVISION. 
+  FILE SECTION.                                 
+  COPY CPYEMP.                
+  WORKING-STORAGE SECTION.  
+       COPY EPEMAP.
+  77 WS-FS1 PIC 9(2).        
+  PROCEDURE DIVISION.
+  MAIN PARA. 
+     PERFORM SEND-PARA. 
+     PERFORM RECEIVE-PARA.
+     PERFORM READ-PARA.         
+     PERFORM SEND-PARA. 
+     PERFORM RECEIVE-PARA.
+     PERFORM WRITE-PARA.
+     PERFORM SEND-PARA. 
+     PERFORM RECEIVE-PARA.
+     PERFORM DELETE-PARA.                                             
+     PERFORM EXIT-PARA.         
+     STOP RUN.    
+  READ-PARA.
+     MOVE EMNUI TO WS-KEY. 
+     EXEC CICS READ
+         DATASET('OUTFILE') INTO (OUT-REC)
+         RIDFIELD(WS-KEY)
+     END-EXEC.                     
+     MOVE I-EMPNAME TO EMNAO. 
+     MOVE I-PHNO TO PHNUO. 
+     MOVE I-DEPT TO DEPTO.                          
+     MOVE I-SAL TO SALRO.  
+  WRITE-PARA.
+     MOVE EMNUI TO WS-KEY.                          
+     MOVE EMNAI TO I-EMPNAME. 
+     MOVE PHNUI TO I-PHNO. 
+     MOVE DEPTI TO I-DEPT.                          
+     MOVE SALRI TO I-SAL.  
+     EXEC CICS WRITE
+         DATASET('OUTFILE') FROM (OUT-REC)
+         RIDFIELD(WS-KEY)
+     END-EXEC.  
+  DELETE-PARA.
+     MOVE EMNUI TO WS-KEY. 
+     EXEC CICS DELETE
+         DATASET('OUTFILE')
+         RIDFIELD(WS-KEY)
+     END-EXEC. 
+  RECEIVE-PARA.                   
+     EXEC CICS                  
+        RECEIVE MAP('EMPL')    
+                MAPSET('EPEMAP')
+                INTO(EMPLI)    
+     END-EXEC.      
+  SEND-PARA.                            
+     EXEC CICS                 
+         SEND MAP('EMPL')      
+              MAPSET('EPEMAP')  
+              FROM(EMPLO)      
+              ERASE             
+     END-EXEC. 
+  EXIT-PARA. 
+     EXEC CICS                     
+         RETURN                    
+     END-EXEC.      
+
+
+  In copy book(CPYEMP):
+
+  FD OUTFILE.              
+  01 OUT-REC.              
+    02 WS-KEY PIC X(5).   
+    02 FILLER PIC X.    
+    02 I-EMPNAME PIC X(3). 
+    02 FILLER PIC X.    
+    02 I-DEPT PIC X(5). 
+    02 FILLER PIC X.    
+    02 I-SAL PIC 9(5). 
+    02 FILLER PIC X.    
+    02 I-PHNO PIC X(12). 
+    02 FILLER PIC X(46).      
+         
